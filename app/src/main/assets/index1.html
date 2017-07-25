@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0" />
+    <title>Test</title>
+    <style type="text/css">
+        button.round {
+        width:110px;
+        height:110px; /*same as the width*/
+        background-color:#ff0000;
+        color:#fff;
+        font-size:1.6em;
+        border:1px solid #ff0000;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        -webkit-box-shadow: 0 0 10px rgba(0,0,0, .75);
+        -moz-box-shadow: 0 0 10px rgba(0,0,0, .75);
+        box-shadow: 2px 2px 15px rgba(0,0,0, .75);
+        }
+
+        button.round:hover{
+        background:#c20b0b;
+        border:1px solid #c20b0b;
+        -webkit-box-shadow: 0px 0px 5px rgba(0,0,0, .75);
+        -moz-box-shadow: 0px 0px 5px rgba(0,0,0, .75);
+        box-shadow: 0px 0px 5px rgba(0,0,0, .75);
+        }
+
+        .center {
+        text-align:center;
+        }
+
+        .vertical-top {
+        margin-top:5em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="center vertical-top">
+    <button class="round" type="button">Scan</button>
+</div>
+
+<!--<script src="resources/js/jquery-1.9.1.js"></script>-->
+<script src="file:///android_asset/jquery-1.9.1.js"></script>
+
+</body>
+
+<script type="text/javascript">
+
+$().ready( function() {
+	$('button').click( function(ev) {
+        if (CRA&&CRA.startBarcodeScan) {
+            CRA.startBarcodeScan();
+        }
+	});
+});
+
+function barcodeScan( barcode) {
+	alert('barcode : '+barcode);
+}
+
+</script>
+</html>

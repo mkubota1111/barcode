@@ -1,0 +1,22 @@
+<html>
+<head>
+    <script>
+       function displayDate() {
+           var d = new Date();
+           document.getElementById('timestamp').innerHTML = 'Updated: '
+                + (d.getMonth()+1) + '-' + d.getDate() + '-' + d.getFullYear() + ' '
+                + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+       }
+       function startBarcodeScan(productName) {
+            IMATS.startBarcodeScan();
+       }
+    </script>
+</head>
+<body>
+    <h1>IMATS Web View</h1>
+    <p>This is an embedded web view. The contents of the label below will be replaced with the barcode scan results if successful.</p>
+    <p>The barcode value = <span id='barcode'></span></p>
+    <input type="button" value="Start barcode scan for Anthrax vial" onClick="startBarcodeScan('Anthrax')" />
+    <p id='timestamp'> </p>
+</body>
+</html>
