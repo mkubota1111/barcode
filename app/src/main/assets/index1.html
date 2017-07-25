@@ -36,33 +36,37 @@
         margin-top:5em;
         }
     </style>
-
 </head>
-
 <body>
-
 <div class="center vertical-top">
-    <button class="round" type="button">Scan</button>
+    <button id="btnPatient" class="round" type="button">Patient Scan</button>
 </div>
-
-<!--<script src="resources/js/jquery-1.9.1.js"></script>-->
+<div class="center vertical-top">
+    <button id="btnLot" class="round" type="button">Lot Scan</button>
+</div>
 <script src="file:///android_asset/jquery-1.9.1.js"></script>
-
-</body>
-
 <script type="text/javascript">
-
 $().ready( function() {
-	$('button').click( function(ev) {
-        if (CRA&&CRA.startBarcodeScan) {
-            CRA.startBarcodeScan();
+	$('#btnPatient').click( function(ev) {
+        if (barcodeJS && barcodeJS.startPatientBarcodeScan) {
+            barcodeJS.startPatientBarcodeScan();
         }
+	});
+
+	$('#btnLot').click(function(ev){
+	    if (barcodeJS && barcodeJS.startLotBarcodeScan) {
+	        barcodeJS.startLotBarcodeScan();
+	    }
 	});
 });
 
-function barcodeScan( barcode) {
-	alert('barcode : '+barcode);
+function patientBarcodeScan( barcode) {
+	alert('patient : '+barcode);
 }
 
+function lotBarcodeScan(barcode) {
+    alert('lot: ' + barcode);
+}
 </script>
+</body>
 </html>

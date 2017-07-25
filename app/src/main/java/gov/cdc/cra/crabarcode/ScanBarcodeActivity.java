@@ -56,7 +56,6 @@ public class ScanBarcodeActivity extends AppCompatActivity {
                 .setRequestedPreviewSize(1600, 1024)
                 .build();
         mCameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
-
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(ScanBarcodeActivity.this, Manifest.permission.CAMERA)) {
@@ -78,12 +77,14 @@ public class ScanBarcodeActivity extends AppCompatActivity {
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
-
+                if (cameraSource != null) {
+                    cameraSource.stop();
+                    cameraSource.release();
+                }
             }
         });
 
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>(){
-
             @Override
             public void release() {
             }
