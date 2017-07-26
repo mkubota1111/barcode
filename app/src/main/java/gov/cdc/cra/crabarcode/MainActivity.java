@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String DEFAULT_URL = "file:///android_asset/index1.html";
@@ -90,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
         else if (LOT_BARCODE == mBarcodeType) {
             functionCall = LOT_JS_CALLBACK;
         }
-        String javascript = String.format("javascript: %s('%s')", functionCall, message);
+        String escapedMessage = StringEscapeUtils.escapeJavaScript(message);
+        String javascript = String.format("javascript: %s('%s')", functionCall, escapedMessage);
         mWebView.loadUrl(javascript);
     }
 }
