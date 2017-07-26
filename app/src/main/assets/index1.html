@@ -33,7 +33,7 @@
         }
 
         .vertical-top {
-        margin-top:5em;
+        margin-top:1em;
         }
     </style>
 </head>
@@ -44,28 +44,39 @@
 <div class="center vertical-top">
     <button id="btnLot" class="round" type="button">Lot Scan</button>
 </div>
-<script src="file:///android_asset/jquery-1.9.1.js"></script>
+<div id="result" class="center vertical-top">
+
+</div>
+<script src="file:///android_asset/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 $().ready( function() {
+    clearBarcodeArea();
+
 	$('#btnPatient').click( function(ev) {
         if (barcodeJS && barcodeJS.startPatientBarcodeScan) {
+            clearBarcodeArea();
             barcodeJS.startPatientBarcodeScan();
         }
 	});
 
 	$('#btnLot').click(function(ev){
 	    if (barcodeJS && barcodeJS.startLotBarcodeScan) {
+	        clearBarcodeArea();
 	        barcodeJS.startLotBarcodeScan();
 	    }
 	});
 });
 
+function clearBarcodeArea() {
+    $('#result').html('Barcode result should appear here...');
+}
+
 function patientBarcodeScan( barcode) {
-	alert('patient : '+barcode);
+	$('#result').html('Patient : '+barcode);
 }
 
 function lotBarcodeScan(barcode) {
-    alert('lot: ' + barcode);
+    $('#result').html('Lot: ' + barcode);
 }
 </script>
 </body>
