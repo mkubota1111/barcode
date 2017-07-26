@@ -1,6 +1,7 @@
 package gov.cdc.cra.crabarcode;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        mWebView.saveState(outState);
         outState.putInt(BARCODE_TYPE, mBarcodeType);
         super.onSaveInstanceState(outState);
     }
